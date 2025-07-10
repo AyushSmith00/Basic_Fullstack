@@ -8,10 +8,10 @@ function App() {
   const [players, setPlayers] = useState([])
 
   useEffect(()=>{
-    axios.get("http://localhost:3000/about").then((response) => {
+    axios.get("/api/about").then((response) => {
       setPlayers(response.data)
     }).catch((error) => {
-      console.log(error)
+      console.log("there is a problem boyy")
     })
   })
 
@@ -21,12 +21,12 @@ function App() {
       <p>Players info: {players.length}</p>
 
       {
-        players.map((player, index) =>{
+        players.map((player, index) =>(
           <div key={player.id}>
             <h3>{player.title}</h3>
             <p>{player.power}</p>
           </div>
-        })
+        ))
       }
     </>
   )
